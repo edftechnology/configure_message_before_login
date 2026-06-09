@@ -6,6 +6,10 @@ Incluir a(s) revisão(ões/versão(ões) em ordem da mais atual para a mais anti
 pois trata-se de uma prática para não poluir o arquivo `README.md` e, ao mesmo tempo,
 facilitar quando incluir uma nova revisão/versão.
 
+**Revisão 1** - 09/06/2026
+- Revisão para representar a instalação do `configure message before login` no `linux ubuntu`.
+  - Autor: Eden Denis F. da S. L. Santos
+
 **Revisão 0** - 10/06/2024
 - Revisão inicial/criação do documento.
   - Autor: Eden Denis F. da S. L. Santos

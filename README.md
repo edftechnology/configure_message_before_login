@@ -1,14 +1,13 @@
-# Como configurar/instalar/usar uma mensagem pelo `lightdm` antes do `login` no `Linux Ubuntu`
+# Como configurar/instalar/usar o `configure message before login` no `Linux Ubuntu` pelo `Terminal Emulator`
 
 ## Resumo
 
 Neste documento estão contidos os principais comandos e configurações para configurar/instalar/usar 
-uma mensagem antes do `login` no `Linux Ubuntu`.
+o `configure message before login` no `Linux Ubuntu`.
 
 ## _Abstract_
 
-_This document contains the main commands and settings to configure/install/use a message before `login` in `Linux Ubuntu`._
-
+_This document contains the main commands and settings to configure/install/use the `configure message before login` in `Linux Ubuntu`._
 
 ## Descrição [2]
 
@@ -36,16 +35,17 @@ mais fácil criar caixas de diálogo personalizadas e interativas para solicitar
 exibir mensagens informativas ou fornecer opções de escolha, melhorando a usabilidade de _scripts_ e
 aplicativos no `Linux`.
 
+## 1. Como configurar/instalar/usar o `configure message before login` no `Linux Ubuntu` [1]
 
-## 1. Como configurar/instalar/usar uma mensagem pelo `lightdm` no `Linux Ubuntu` [1][3]
+Vale ressaltar que alguns sistemas operacionais voltados para segurança e pentest, como o `Kali Linux`, podem já possuir ferramentas similares instaladas nativamente. No entanto, as instruções abaixo descrevem como realizar a instalação e configuração manual, como se o recurso não existisse no sistema.
 
-Para configurar/instalar/usar uma mensagem pelo `light` no `Linux Ubuntu`, você pode seguir estes passos:
+Para configurar/instalar/usar o `configure message before login` no `Linux Ubuntu`, você pode seguir estes passos:
 
 1. Abrir o `Terminal Emulator`. Você pode fazer isso pressionando:
 
     ```bash
     Ctrl + Alt + T
-    ```    
+    ```
 
 2. Certifique-se de que seu sistema esteja limpo e atualizado.
 
@@ -88,7 +88,6 @@ Para configurar/instalar/usar uma mensagem pelo `light` no `Linux Ubuntu`, você
     ```bash
     sudo apt full-upgrade -y
     ```
- 
 
 ## 2. Usar um _script_ de _greeter_
 
@@ -144,10 +143,9 @@ _script_ de mensagem:
     sudo systemctl restart lightdm
     ```
 
-
 ### 3. Código completo para configurar/instalar/usar
 
-Para configurar/instalar/usar uma mensagem pelo `lightdm` no `Linux Ubuntu` sem precisar digitar 
+Para configurar/instalar/usar o `configure message before login` no `Linux Ubuntu` sem precisar digitar 
 linha por linha, você pode seguir estas etapas:
 
 1. Abrir o `Terminal Emulator`. Você pode fazer isso pressionando:
@@ -162,10 +160,8 @@ linha por linha, você pode seguir estas etapas:
     NÂO há.
     ```
 
-
 ## Referências
 
-[1] OPENAI. **Instalar a `mensagem pré-login` no `linux ubuntu` pelo `terminal emulator`.** Disponível em: <https://chat.openai.com/c/4823d7e8-3996-46c5-ac88-8131da2ea769> (texto adaptado). ChatGPT. Acessado em: 06/02/2024 18:26.
+[1] OPENAI. **Instalar o `configure message before login` no `linux ubuntu` pelo `terminal emulator`**. Disponível em: <https://chatgpt.com/g/g-p-6980caf949648191ad6acfcdbe590f9e-instalar/c/4823d7e8-3996-46c5-ac88-8131da2ea769>. ChatGPT. Acessado em: 09/06/2026.
 
-[2] OPENAI. **Vs code: editor popular.** Disponível em: <https://chat.openai.com/c/b640a25d-f8e3-4922-8a3b-ed74a2657e42> (texto adaptado). ChatGPT. Acessado em: 06/02/2024 18:26.
-
+[2] OPENAI. **Vs code: editor popular**. Disponível em: <https://chat.openai.com/c/b640a25d-f8e3-4922-8a3b-ed74a2657e42>. ChatGPT. Acessado em: 09/06/2026.
