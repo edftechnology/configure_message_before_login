@@ -165,7 +165,7 @@ linha por linha, você pode seguir estas etapas:
 
 ## Referências
 
-[1] OPENAI. **Adicionar mensagem pré-login xubuntu.** Disponível em: <https://chat.openai.com/c/4823d7e8-3996-46c5-ac88-8131da2ea769> (texto adaptado). ChatGPT. Acessado em: 06/02/2024 18:26.
+[1] OPENAI. **Instalar a `mensagem pré-login` no `linux ubuntu` pelo `terminal emulator`.** Disponível em: <https://chat.openai.com/c/4823d7e8-3996-46c5-ac88-8131da2ea769> (texto adaptado). ChatGPT. Acessado em: 06/02/2024 18:26.
 
 [2] OPENAI. **Vs code: editor popular.** Disponível em: <https://chat.openai.com/c/b640a25d-f8e3-4922-8a3b-ed74a2657e42> (texto adaptado). ChatGPT. Acessado em: 06/02/2024 18:26.
 
