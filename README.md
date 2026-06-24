@@ -92,55 +92,58 @@ Para configurar/instalar/usar o `configure message before login` no `Linux Ubunt
 ## 2. Usar um _script_ de _greeter_
 
 Uma maneira de garantir que a mensagem seja mostrada é usar um _script_ de greeter personalizado que
-será executado antes da tela de _login_. Este _script_ pode criar uma janela de diálogo ou algo 
-similar para mostrar a mensagem. O `zenity` é uma ferramenta que pode ser usada para criar uma 
-janela de mensagem gráfica a partir de um _script_.
+será executado antes da tela de _login_. Este _script_ cria uma janela de aviso com `zenity` e,
+depois que o aviso é fechado, inicia um _helper_ de auto-submit do `LightDM`.
 
-1. **Instalar o `Zenity` (se ainda não estiver instalado):**
+O _helper_ não faz _autologin_. Ele monitora `/var/log/lightdm/lightdm.log` e só envia `Return` ao
+`lightdm-gtk-greeter` quando o `PAM` registra autenticação bem-sucedida para `edenedfsls`, por
+exemplo após reconhecimento facial pelo `howdy`.
+
+1. **Instalar dependências:**
 
     ```bash
-    sudo apt install zenity -y
+    sudo apt install -y zenity xdotool
     ```
 
-2. **Criar o _script_ de Mensagem:** Crie um novo arquivo de _script_. Por exemplo, 
-`login_message.sh` em `/usr/local/bin/` com o comando:
+2. **Instalar os scripts versionados:**
 
     ```bash
-    sudo nano /usr/local/bin/login_message.sh
+    cp scripts/srv_login_message.sh /home/edenedfsls/.local/bin/srv_login_message.sh
+    cp scripts/srv_lightdm_auto_submit.sh /home/edenedfsls/.local/bin/srv_lightdm_auto_submit.sh
+    chmod +x /home/edenedfsls/.local/bin/srv_login_message.sh
+    chmod +x /home/edenedfsls/.local/bin/srv_lightdm_auto_submit.sh
     ```
 
-3. **Adicione o seguinte conteúdo ao arquivo:**
+3. **Configurar o `LightDM` para executar o script de aviso:**
 
     ```bash
-    #!/bin/bash
-    zenity --info --no-wrap --text="ATTENTION! \n\n EDF Technology, based on current labor legislation, reserves the right to audit and monitor the equipment and systems made available by it. \n Therefore, this equipment and / or system should only be used for corporate purposes of interest to the Company, if you have doubts about your permission to access it, \n and immediately, as the unauthorized use can be characterized by misuse and non-observance of the internal regulations, which may subject the employee to disciplinary penalties pertaining to the Information Security Policy and the Code of Conduct and Ethics. \n The actions performed on this equipment are monitored, which gives the owner the right to use them for any purpose." --title="EDF Technology" --width=1280 --height=720
-    ```
-
-4. **Tornar o _script_ executável:**
-
-    ```bash
-    sudo chmod +x /usr/local/bin/login_message.sh
-    ```
-
-5. **Modificar a Configuração do `lightdm` para Executar o _script_:** Edite ou crie o arquivo de 
-configuração do `lightdm` como mencionado anteriormente, adicionando a linha para executar o 
-_script_ de mensagem:
-    
-    ```bash
-    sudo nano /etc/lightdm/lightdm.conf.d/50-my-custom.conf
-    ```
-
-    5.1 **Adicione ou modifique a seguinte linha:** 
-
-    ```bash
+    sudo mkdir -p /etc/lightdm/lightdm.conf.d
+    sudo tee /etc/lightdm/lightdm.conf.d/50-my-custom.conf >/dev/null <<'EOF'
     [Seat:*]
-    greeter-setup-script=/usr/local/bin/login_message.sh
+    greeter-setup-script=/home/edenedfsls/.local/bin/srv_login_message.sh
+    EOF
     ```
 
-6. **Reinicie o `lightdm` ou o Computador:**
+4. **Reiniciar o `lightdm` ou o computador:**
 
     ```bash
     sudo systemctl restart lightdm
+    ```
+
+5. **Validar o resultado:**
+
+   Após o aviso inicial, o greeter deve iniciar o fluxo normal de autenticação. Quando o `howdy`
+   reconhecer o rosto e o `PAM` registrar sucesso, o _helper_ envia `Return` para acionar o botão
+   `Log in` automaticamente.
+
+   Se o rosto não for reconhecido, o fluxo continua pedindo senha; o _helper_ não ignora senha e
+   não altera a autenticação do `PAM`.
+
+6. **Depuração:**
+
+    ```bash
+    tail -n 80 /var/log/lightdm/lightdm.log
+    tail -n 80 /var/log/lightdm/seat0-greeter.log
     ```
 
 ### 3. Código completo para configurar/instalar/usar
@@ -156,8 +159,19 @@ linha por linha, você pode seguir estas etapas:
 
 2. Digitar o seguinte comando e pressione `Enter`:
 
-    ```
-    NÂO há.
+    ```bash
+    cd /home/edenedfsls/Documents/Downloads/unix/ubuntu/commands_and_settings/configure_message_before_login
+    sudo apt install -y zenity xdotool
+    cp scripts/srv_login_message.sh /home/edenedfsls/.local/bin/srv_login_message.sh
+    cp scripts/srv_lightdm_auto_submit.sh /home/edenedfsls/.local/bin/srv_lightdm_auto_submit.sh
+    chmod +x /home/edenedfsls/.local/bin/srv_login_message.sh
+    chmod +x /home/edenedfsls/.local/bin/srv_lightdm_auto_submit.sh
+    sudo mkdir -p /etc/lightdm/lightdm.conf.d
+    sudo tee /etc/lightdm/lightdm.conf.d/50-my-custom.conf >/dev/null <<'EOF'
+    [Seat:*]
+    greeter-setup-script=/home/edenedfsls/.local/bin/srv_login_message.sh
+    EOF
+    sudo systemctl restart lightdm
     ```
 
 ## Referências

@@ -28,6 +28,8 @@
 *.tar.lzma
 *.tg.xz
 *.sh
+!scripts/srv_login_message.sh
+!scripts/srv_lightdm_auto_submit.sh
 *.war
 *.wmv
 *.webm
