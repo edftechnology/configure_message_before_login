@@ -142,6 +142,7 @@ exemplo após reconhecimento facial pelo `howdy`.
 6. **Depuração:**
 
     ```bash
+    tail -n 80 /tmp/lightdm_auto_submit.log
     tail -n 80 /var/log/lightdm/lightdm.log
     tail -n 80 /var/log/lightdm/seat0-greeter.log
     ```
