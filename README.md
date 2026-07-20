@@ -92,7 +92,8 @@ Para configurar/instalar/usar o `configure message before login` no `Linux Ubunt
 ## 2. Usar um _script_ de _greeter_
 
 Uma maneira de garantir que a mensagem seja mostrada é usar um _script_ de greeter personalizado que
-será executado antes da tela de _login_. Este _script_ cria uma janela de aviso com `zenity` e,
+será executado antes da tela de _login_. Este _script_ cria uma janela de aviso com `zenity`,
+mantém a mensagem por no máximo 10 segundos e,
 depois que o aviso é fechado, inicia um _helper_ de auto-submit do `LightDM`.
 
 O _helper_ não faz _autologin_. Ele monitora `/var/log/lightdm/lightdm.log` e só envia `Return` ao
